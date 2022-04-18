@@ -63,6 +63,17 @@ const calculator = {
         calculator.currentOperator = this.textContent;
         displayBox.textContent = calculator.totalNumber;
       }
+
+      if(this.textContent === 'AC') {
+        if(calculator.dotPressed) {
+          calculator.toggleDotFocus();
+        }
+        calculator.addOperatorFocus();
+        calculator.currentNumber = null;
+        calculator.currentOperator = null;
+        calculator.totalNumber = null;
+        displayBox.textContent = "";
+      }
     })});
   },
   addOperatorFocus(focusOperator) {
