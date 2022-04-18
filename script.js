@@ -54,7 +54,6 @@ const calculator = {
               calculator.totalNumber -= +calculator.currentNumber; break;
           }
           console.log(calculator.totalNumber);
-          displayBox.textContent = calculator.totalNumber;
           calculator.currentOperator = this.textContent;
         }
         else {
@@ -65,7 +64,7 @@ const calculator = {
         }
         calculator.currentNumber = "";
         calculator.currentOperator = this.textContent;
-        displayBox.textContent = calculator.totalNumber;
+        displayBox.textContent = Math.round(calculator.totalNumber * 100) / 100;
       }
 
       if(this.textContent === 'AC') {
