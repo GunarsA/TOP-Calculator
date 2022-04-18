@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calculator-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#calculator-display {
+  height: 100px;
+  width: 400px;
+  border: solid 5px black;
+}
+
+#calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#calculator-buttons button {
+  font-size: 32px;
+}
+
+.button-wide {
+  grid-column: span 2;
+}
