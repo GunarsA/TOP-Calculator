@@ -13,6 +13,10 @@ const calculator = {
       const displayBox = document.querySelector('#calculator-display');
 
       if(this.classList.contains('digit')) {
+        if(calculator.dotPressed) {
+          calculator.currentNumber += this.textContent;
+        }
+        else {
           if(calculator.currentNumber) {
             calculator.currentNumber *= 10;
             calculator.currentNumber += parseInt(this.textContent);
@@ -20,7 +24,19 @@ const calculator = {
           else {
             calculator.currentNumber = parseInt(this.textContent);
           }
-          displayBox.textContent = calculator.currentNumber;
+        }
+        displayBox.textContent = calculator.currentNumber;
+      }
+
+      if(this.classList.contains('dot') && !calculator.dotPressed) {
+        calculator.toggleDotFocus();
+        if(calculator.currentNumber) {
+          calculator.currentNumber += '.';
+        }
+        else {
+          calculator.currentNumber = '0.';
+        }
+        displayBox.textContent = calculator.currentNumber;
       }
 
       if(this.classList.contains('operator')) {
@@ -28,10 +44,10 @@ const calculator = {
 
         if(calculator.currentOperator) {
           switch(calculator.currentOperator) {
-            case '*': calculator.totalNumber *= calculator.currentNumber; break;
-            case '/': calculator.totalNumber /= calculator.currentNumber; break;
-            case '+': calculator.totalNumber += calculator.currentNumber; break;
-            case '-': calculator.totalNumber -= calculator.currentNumber; break;
+            case '*': calculator.totalNumber *= +calculator.currentNumber; break;
+            case '/': calculator.totalNumber /= +calculator.currentNumber; break;
+            case '+': calculator.totalNumber = +calculator.totalNumber + +calculator.currentNumber; break;
+            case '-': calculator.totalNumber -= +calculator.currentNumber; break;
           }
           console.log(calculator.totalNumber);
           displayBox.textContent = calculator.totalNumber;
@@ -39,6 +55,9 @@ const calculator = {
         }
         else {
           calculator.totalNumber = calculator.currentNumber;
+        }
+        if(calculator.dotPressed) {
+          calculator.toggleDotFocus();
         }
         calculator.currentNumber = null;
         calculator.currentOperator = this.textContent;
@@ -56,6 +75,11 @@ const calculator = {
         operator.style.backgroundColor = ''
       }
     });
+  },
+  toggleDotFocus() {
+    const dotButton = document.querySelector('.dot');
+    dotButton.style.opacity = (dotButton.style.opacity ? '' : '0.25');
+    calculator.dotPressed = !calculator.dotPressed;
   }
 };
 
