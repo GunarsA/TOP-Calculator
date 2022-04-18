@@ -19,6 +19,11 @@ body {
   height: 100px;
   width: 400px;
   border: solid 5px black;
+  font-size: 64px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 10px;
 }
 
 #calculator-buttons {
