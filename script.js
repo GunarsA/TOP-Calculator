@@ -87,6 +87,89 @@ const calculator = {
         displayBox.textContent = calculator.currentNumber;
       }
     })});
+    
+    document.addEventListener('keyup', function(event) {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach((button) => {
+        switch(event.key) {
+          case '1': 
+            if(button.textContent === '1') {
+              button.click();
+            }
+            break;
+          case '2': 
+            if(button.textContent === '2') {
+              button.click();
+            }
+            break;
+          case '3': 
+            if(button.textContent === '3') {
+              button.click();
+            }
+            break;
+          case '4': 
+            if(button.textContent === '4') {
+              button.click();
+            }
+            break;
+          case '5': 
+            if(button.textContent === '5') {
+              button.click();
+            }
+            break;
+          case '6': 
+            if(button.textContent === '6') {
+              button.click();
+            }
+            break;
+          case '7': 
+            if(button.textContent === '7') {
+              button.click();
+            }
+            break;
+          case '8': 
+            if(button.textContent === '8') {
+              button.click();
+            }
+            break;
+          case '9': 
+            if(button.textContent === '9') {
+              button.click();
+            }
+            break;
+          case '*': 
+            if(button.textContent === '*') {
+              button.click();
+            }
+            break;
+          case '/': 
+            if(button.textContent === '/') {
+              button.click();
+            }
+            break;
+          case '-': 
+            if(button.textContent === '-') {
+              button.click();
+            }
+            break;
+          case '+': 
+            if(button.textContent === '+') {
+              button.click();
+            }
+            break;
+          case 'Enter':
+            if(button.textContent === '=') {
+              button.click();
+            }
+            break;
+          case 'Backspace':
+            if(button.textContent === '⇦') {
+              button.click();
+            }
+            break;
+        }
+      });
+    });
   },
   addOperatorFocus(focusOperator) {
     const operators = document.querySelectorAll('.operator');
