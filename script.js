@@ -44,10 +44,14 @@ const calculator = {
 
         if(calculator.currentOperator) {
           switch(calculator.currentOperator) {
-            case '*': calculator.totalNumber *= +calculator.currentNumber; break;
-            case '/': calculator.totalNumber /= +calculator.currentNumber; break;
-            case '+': calculator.totalNumber = +calculator.totalNumber + +calculator.currentNumber; break;
-            case '-': calculator.totalNumber -= +calculator.currentNumber; break;
+            case '*': 
+              calculator.totalNumber *= +calculator.currentNumber; break;
+            case '/' :
+              calculator.totalNumber /= +calculator.currentNumber; break;
+            case '+': 
+              calculator.totalNumber = +calculator.totalNumber + +calculator.currentNumber; break;
+            case '-': 
+              calculator.totalNumber -= +calculator.currentNumber; break;
           }
           console.log(calculator.totalNumber);
           displayBox.textContent = calculator.totalNumber;
@@ -59,7 +63,7 @@ const calculator = {
         if(calculator.dotPressed) {
           calculator.toggleDotFocus();
         }
-        calculator.currentNumber = null;
+        calculator.currentNumber = "";
         calculator.currentOperator = this.textContent;
         displayBox.textContent = calculator.totalNumber;
       }
@@ -73,6 +77,15 @@ const calculator = {
         calculator.currentOperator = null;
         calculator.totalNumber = null;
         displayBox.textContent = "";
+      }
+
+      if(this.textContent === '⇦') {
+        calculator.currentNumber = (String(calculator.currentNumber).length == 0 ? 
+            "" :
+            (String(calculator.currentNumber).substring(0, 
+                String(calculator.currentNumber).length - 1)));
+
+        displayBox.textContent = calculator.currentNumber;
       }
     })});
   },
